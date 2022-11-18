@@ -35,7 +35,6 @@ def walk_graph(g, d, start, end):
         word = todo.popleft()
         if word == end:  # end is reachable
             break
-
         same_length = chain(*(g[short] for short in shortened_words(word)))
         one_longer = chain(*(g[word, i] for i in range(len(word) + 1)))
         one_shorter = (w for w, i in shortened_words(word) if w in d)
@@ -54,4 +53,8 @@ def walk_graph(g, d, start, end):
 
 dictionary = get_dictionary_word_list()  # list of words
 graph = make_graph(dictionary)
-print(" -> ".join(walk_graph(graph, dictionary, "pr", "porro")))
+try:
+    print(" -> ".join(walk_graph(graph, dictionary, "cane", "pipa")))
+except:
+    print("parola del cazzo cambiala")
+
