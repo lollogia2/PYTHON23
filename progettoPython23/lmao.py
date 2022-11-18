@@ -2,10 +2,10 @@ from collections import defaultdict
 
 
 def get_dictionary_word_list():
-    with open('words.italian.txt') as f:
+    with open('poolstupido.txt') as f:
         # create a  dictionary object to return
         # opening the file in read mode
-        my_file = open("words.italian.txt", "r")
+        my_file = open("poolstupido.txt", "r")
         # reading the file
         data = my_file.read()
         # replacing end splitting the text

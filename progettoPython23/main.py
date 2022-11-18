@@ -3,17 +3,16 @@ from itertools import chain
 
 
 def get_dictionary_word_list():
-    with open('words.italian.txt') as f:
-        # create a  dictionary object to return
-        # opening the file in read mode
-        my_file = open("words.italian.txt", "r")
-        # reading the file
-        data = my_file.read()
-        # replacing end splitting the text
-        # when newline ('\n') is seen.
-        data_into_list = data.split("\n")
-        my_file.close()
-        return data_into_list
+    # create a  dictionary object to return
+    # opening the file in read mode
+    my_file = open("words.italian.txt", "r")
+    # reading the file
+    data = my_file.read()
+    # replacing end splitting the text
+    # when newline ('\n') is seen.
+    data_into_list = data.split("\n")
+    my_file.close()
+    return data_into_list
 
 
 def shortened_words(word):
@@ -55,4 +54,4 @@ def walk_graph(g, d, start, end):
 
 dictionary = get_dictionary_word_list()  # list of words
 graph = make_graph(dictionary)
-print(" -> ".join(walk_graph(graph, dictionary, "torta", "trota")))
+print(" -> ".join(walk_graph(graph, dictionary, "pr", "porro")))
