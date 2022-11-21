@@ -1,5 +1,7 @@
+from tkinter import *
 from collections import defaultdict, deque
 from itertools import chain
+from tkinter import messagebox
 
 
 def get_dictionary_word_list():
@@ -51,10 +53,35 @@ def walk_graph(g, d, start, end):
     return path[::-1]
 
 
-dictionary = get_dictionary_word_list()  # list of words
-graph = make_graph(dictionary)
-try:
-    print(" -> ".join(walk_graph(graph, dictionary, "cane", "pipa")))
-except:
-    print("parola del cazzo cambiala")
+def run():
+    if len(E1.get()) != 0 and len(E2.get()) != 0 and E1.get().isalpha() and E2.get().isalpha():
+        dictionary = get_dictionary_word_list()  # list of words
+        graph = make_graph(dictionary)
+        try:
+            a = " -> ".join(walk_graph(graph, dictionary, E1.get(), E2.get()))
+            result = Label(gui, text=a, fg='MediumOrchid4', background='dark grey', font=('Ariel', 11, 'bold'))
+            result.grid(row=4)
+        except:
+            messagebox.showerror('ERRORE', 'Parola del cazzo cambiala   ')
+            print("ERRORE")
+    else:
+        messagebox.showerror('ERRORE', 'Campi vuoti o caratteri errati!')
 
+
+gui = Tk(className='FindPath')
+gui.geometry('400x300')
+gui.configure(background='dark grey')
+label = Label(gui, text="BIG DICTIONARY", fg="MediumOrchid4", background='dark grey', font=('Ariel', 18, 'bold italic'))
+label.grid(row=0)
+L1 = Label(gui, text='Parola di partenza: ', fg='red', background='dark grey', font=('Ariel', 11, 'bold italic'))
+L1.grid(row=1, column=0)
+E1 = Entry(gui, bd=5)
+E1.grid(row=1, column=1)
+L2 = Label(gui, text='Parola di arrivo: ', fg='red', background='dark grey', font=('Ariel', 11, 'bold italic'))
+L2.grid(row=2, column=0)
+E2 = Entry(gui, bd=5)
+E2.grid(row=2, column=1)
+btn = Button(gui, text='Calcola il percorso !', bd='5', command=run, font=('Ariel', 9, 'bold'))
+btn.grid(row=3)
+
+gui.mainloop()
