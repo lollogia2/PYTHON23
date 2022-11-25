@@ -4,6 +4,7 @@ from itertools import chain
 from tkinter import messagebox
 
 
+# --------------------------------definizione funzioni utili--------------------------------
 def get_dictionary_word_list():
     # create a  dictionary object to return
     # opening the file in read mode
@@ -37,7 +38,7 @@ def walk_graph(g, d, start, end):
         word = todo.popleft()
         if word == end:  # end is reachable
             break
-        same_length = chain(*(g[short] for short in shortened_words(word)))
+        same_length = chain(*(g[short] for short in shortened_words(word)))  # * print the list separated by spaces
         one_longer = chain(*(g[word, i] for i in range(len(word) + 1)))
         one_shorter = (w for w, i in shortened_words(word) if w in d)
         for next_word in chain(same_length, one_longer, one_shorter):
@@ -62,12 +63,13 @@ def run():
             result = Label(gui, text=a, fg='MediumOrchid4', background='dark grey', font=('Ariel', 11, 'bold'))
             result.grid(row=4)
         except:
-            messagebox.showerror('ERRORE', 'Parola del cazzo cambiala   ')
-            print("ERRORE")
+            messagebox.showerror('ERRORE', 'Parola del cazzo cambiala   ')  # gestione eccezione nel caso vengano
+            # inserite parole assurde (es. 'aaaaaaa')
     else:
         messagebox.showerror('ERRORE', 'Campi vuoti o caratteri errati!')
 
 
+# --------------------------------parte grafica--------------------------------
 gui = Tk(className='FindPath')
 gui.geometry('400x300')
 gui.configure(background='dark grey')
