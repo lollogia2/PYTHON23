@@ -2,12 +2,6 @@ from tkinter import *
 from collections import defaultdict, deque
 from itertools import chain
 import errors
-from tkinter import messagebox
-import func_timeout
-import time
-import timeout_decorator
-import multiprocessing
-import GUI
 
 
 # --------------------------------definizione funzioni utili--------------------------------

@@ -1,9 +1,6 @@
 from tkinter import *
-from tkinter import messagebox
 import errors
 import find_word as fw
-
-global E1, E2
 
 
 # --------------------------------parte grafica--------------------------------
