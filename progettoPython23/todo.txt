@@ -1,3 +1,4 @@
 1. migliorare assolutamente la rappresentazione grafica del 'path' delle parole
 2. se metto 'aaaaa' come parola d'arrivo il programma si schianta
 3. se si vuole migliarare in modo generale la gui (colori, immagini, ecc..)
+4. gestione loop infinito
