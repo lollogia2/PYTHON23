@@ -5,5 +5,5 @@ def fields():
     messagebox.showerror('ERRORE', 'Campi vuoti o caratteri errati!')
 
 
-def fields2():
-    messagebox.showerror('ERRORE', 'parola del cazzo!')
+def general_warning():
+    messagebox.showwarning('Attenzione', 'Conessione non trovata! Prova a cambiare parole ...')

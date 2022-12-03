@@ -3,8 +3,13 @@ from collections import defaultdict, deque
 from itertools import chain
 import errors
 
-
 # --------------------------------definizione funzioni utili--------------------------------
+loopcounter = 0
+
+
+def azzera():
+    global loopcounter
+    loopcounter = 0
 
 
 def get_dictionary_word_list():
@@ -21,8 +26,15 @@ def get_dictionary_word_list():
 
 
 def shortened_words(word):
-    for i in range(len(word)):
-        yield word[:i] + word[i + 1:], i
+    global loopcounter
+    loopcounter = loopcounter + 1
+    if loopcounter < 65000:
+        print(loopcounter)
+        for i in range(len(word)):
+            yield word[:i] + word[i + 1:], i
+    else:
+        typeError: SystemError
+        return None
 
 
 def make_graph(d):
@@ -33,7 +45,10 @@ def make_graph(d):
     return g
 
 
-def walk_graph(g, d, start, end):
+def walk_graph(g, d, start, end,azz):
+    #global loopcounter
+    #loopcounter = azz
+    print("aaaaaaa")
     todo = deque([start])
     seen = {start: None}
     while todo:
@@ -54,20 +69,3 @@ def walk_graph(g, d, start, end):
     while path[-1] != start:
         path.append(seen[path[-1]])
     return path[::-1]
-
-
-def run1(E1, E2):
-    print("aaaaaa")
-    dictionary = get_dictionary_word_list()  # list of words
-    graph = make_graph(dictionary)
-    try:
-        a = " -> ".join(walk_graph(graph, dictionary, E1, E2))
-        result = Label(text=a, fg='MediumOrchid4', background='dark grey', font=('Ariel', 11, 'bold'))
-        result.grid(row=4)
-    except:
-        errors.fields2()  # gestione eccezione nel caso vengano
-        # inserite parole assurde (es. 'aaaaaaa')
-
-
-def run2():
-    print("printatpo")
