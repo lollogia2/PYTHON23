@@ -4,12 +4,12 @@ from itertools import chain
 import errors
 
 # --------------------------------definizione funzioni utili--------------------------------
-loopcounter = 0
+loop_counter = 0
 
 
-def azzera():
-    global loopcounter
-    loopcounter = 0
+def reset_counter():
+    global loop_counter
+    loop_counter = 0
 
 
 def get_dictionary_word_list():
@@ -26,10 +26,10 @@ def get_dictionary_word_list():
 
 
 def shortened_words(word):
-    global loopcounter
-    loopcounter = loopcounter + 1
-    if loopcounter < 65000:
-        print(loopcounter)
+    global loop_counter
+    loop_counter = loop_counter + 1
+    if loop_counter < 65000:
+        print(loop_counter)
         for i in range(len(word)):
             yield word[:i] + word[i + 1:], i
     else:
@@ -45,15 +45,15 @@ def make_graph(d):
     return g
 
 
-def walk_graph(g, d, start, end,azz):
-    #global loopcounter
-    #loopcounter = azz
-    print("aaaaaaa")
+def walk_graph(g, d, start, end):
     todo = deque([start])
     seen = {start: None}
     while todo:
         word = todo.popleft()
-        if word == end:  # end is reachable
+        if word == end:
+            break
+        elif sorted(word) == sorted(end):
+            end = word
             break
         same_length = chain(*(g[short] for short in shortened_words(word)))  # * print the list separated by spaces
         one_longer = chain(*(g[word, i] for i in range(len(word) + 1)))

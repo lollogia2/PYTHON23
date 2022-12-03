@@ -47,15 +47,16 @@ def setup():
 
     def run1(e1, e2):
         if e1 != '' and e2 != '' and e1.isalpha() and e2.isalpha():
+            fw.reset_counter()
             dictionary = fw.get_dictionary_word_list()  # list of words
             graph = fw.make_graph(dictionary)
             try:
-                a = " -> ".join(fw.walk_graph(graph, dictionary, e1, e2, 0))
+                a = " -> ".join(fw.walk_graph(graph, dictionary, e1, e2))
                 result.config(text=a)
             except TypeError:
-                errors.general_warning()
+                errors.error1()
         else:
-            errors.fields()
+            errors.fields_warning()
 
     btn.config(command=lambda: run1(E1.get(), E2.get()))
     gui.mainloop()

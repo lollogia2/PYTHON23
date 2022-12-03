@@ -1,4 +1,3 @@
 1. migliorare assolutamente la rappresentazione grafica del 'path' delle parole
-2. se metto 'aaaaa' come parola d'arrivo il programma si schianta
-3. se si vuole migliarare in modo generale la gui (colori, immagini, ecc..)
-4. azzerare il loop counter così non devo chiudere a riaprire
+2. saper spiegare pezzo di codice incollato da git
+3. migliarare in modo generale la gui (colori, immagini, ecc..)
