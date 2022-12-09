@@ -12,14 +12,14 @@ def reset_counter():
     loop_counter = 0
 
 
-def anagram(a, d):
-    anagramo = [''.join(element) for element in list(permutations(a))]
-    ass = []
-    for elemento in anagramo:
+def make_anagrams(word, d):
+    all_anagram = [''.join(element) for element in list(permutations(word))]
+    make_sense = []
+    for elemento in all_anagram:
         if elemento in d:
-            ass.append(elemento)
+            make_sense.append(elemento)
 
-    return ass
+    return make_sense
 
 
 def get_dictionary_word_list():
@@ -66,8 +66,8 @@ def walk_graph(g, d, start, end):
         same_length = chain(*(g[short] for short in shortened_words(word)))  # * print the list separated by spaces
         one_longer = chain(*(g[word, i] for i in range(len(word) + 1)))
         one_shorter = (w for w, i in shortened_words(word) if w in d)
-        anagrama = anagram(word, d)
-        for next_word in chain(same_length, one_longer, one_shorter, anagrama):
+        anagram = make_anagrams(word, d)
+        for next_word in chain(same_length, one_longer, one_shorter, anagram):
             if next_word not in seen:
                 seen[next_word] = word
                 todo.append(next_word)
@@ -76,7 +76,5 @@ def walk_graph(g, d, start, end):
 
     path = [end]
     while path[-1] != start:
-        print(path)
-        print(seen)
         path.append(seen[path[-1]])
     return path[::-1]

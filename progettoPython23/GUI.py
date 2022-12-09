@@ -51,7 +51,7 @@ def setup():
             dictionary = fw.get_dictionary_word_list()  # list of words
             graph = fw.make_graph(dictionary)
             try:
-                a = " -> ".join(fw.walk_graph(graph, dictionary, e1, e2))
+                a = " -> ".join(fw.walk_graph(graph, dictionary, e1.lower(), e2.lower()))
                 result.config(text=a)
             except TypeError:
                 errors.error1()

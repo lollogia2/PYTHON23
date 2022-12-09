@@ -1,4 +1,4 @@
 1. migliorare assolutamente la rappresentazione grafica del 'path' delle parole
 2. saper spiegare pezzo di codice incollato da git
 3. migliarare in modo generale la gui (colori, immagini, ecc..)
-4. visualizzare meglio gli anagrammi?
+4. controllare ragionamento anagrammi
