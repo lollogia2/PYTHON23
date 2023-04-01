@@ -23,15 +23,16 @@ def make_anagrams(word, d):
 
 
 def get_dictionary_word_list():
-    # create a  dictionary object to return
-    # opening the file in read mode
+    # crea e ritorna un oggetto dizionario
+    # apre il file in read mode
     my_file = open("words.italian.txt", "r")
-    # reading the file
+    # lettura del file
     data = my_file.read()
     # replacing end splitting the text
     # when newline ('\n') is seen.
     data_into_list = data.split("\n")
     my_file.close()
+    # print(data_into_list)
     return data_into_list
 
 
@@ -42,13 +43,14 @@ def shortened_words(word):
         yield word[:i] + word[i + 1:], i
 
 
-# crea un dizionario che ha come chiave la paerola abbreviata e come elemento la parola intera
+# crea un dizionario che ha come chiave la (parola abbreviata e la posizione dell'abbreviazione) e come elemento la
+# parola intera
 def make_graph(d):
     g = defaultdict(list)
     for word in d:
         for short in shortened_words(word):
             g[short].append(word)
-    print(g)
+    # print(g)
     return g
 
 
@@ -59,7 +61,7 @@ def walk_graph(g, d, start, end):
     todo = deque([start])
     seen = {start: None}
     while todo:
-        # print(to-do)
+        # print(todo)
         if loop_counter < 600:
             # print(loop_counter)
             word = todo.popleft()
